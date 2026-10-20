@@ -106,9 +106,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06) }
 .hero::before { content: ''; position: absolute; top: 0; right: -20%; width: 60%; height: 100%; background: radial-gradient(ellipse at center, var(--blue-light) 0%, transparent 65%); pointer-events: none }
 .hero::after { content: ''; position: absolute; bottom: -10%; left: -5%; width: 40%; height: 60%; background: radial-gradient(ellipse at center, var(--green-light) 0%, transparent 65%); pointer-events: none }
 .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center }
-.hero-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem 1rem; border-radius: 2rem; background: var(--blue-light); border: 1px solid color-mix(in srgb, var(--blue) 15%, transparent); font-size: .78rem; font-weight: 600; color: var(--blue); margin-bottom: 1.5rem }
-.hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse-dot 2s infinite }
-@keyframes pulse-dot { 0%,100%{ opacity:1 } 50%{ opacity:.3 } }
 .hero h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1.25rem; line-height: 1.1 }
 .hero h1 .gradient { background: linear-gradient(135deg, var(--blue) 0%, var(--green) 50%, var(--yellow) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
 .hero-sub { font-size: 1.05rem; color: var(--fg-muted); max-width: 440px; margin-bottom: 2rem; line-height: 1.7 }
@@ -304,7 +301,6 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-badge reveal">Disponible pour vos projets</div>
         <h1 class="reveal">On donne vie à vos<br><span class="gradient">idées créatives</span></h1>
         <p class="hero-sub reveal">Studio créatif spécialisé en sites web, logos et flyers. Des designs modernes et percutants qui font la différence pour votre business.</p>
         <div class="hero-actions reveal">
@@ -390,7 +386,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
       <div class="port-card reveal">
         <div class="port-img">
           <span class="port-tag web">Site vitrine</span>
-          <img src="images/projet-saveur.png" alt="Saveur d'Or — Restaurant" loading="lazy">
+          <img src="images/projet-saveur.jpeg" alt="Saveur d'Or — Restaurant" loading="lazy">
           <div class="port-overlay"><a href="https://saveur-restaurant.netlify.app" target="_blank">Visiter le site →</a></div>
         </div>
         <div class="port-body">
@@ -403,7 +399,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
       <div class="port-card reveal">
         <div class="port-img">
           <span class="port-tag web">Site vitrine</span>
-          <img src="images/projet-sharp.png" alt="Sharp — Barbershop" loading="lazy">
+          <img src="images/projet-sharp.jpeg" alt="Sharp — Barbershop" loading="lazy">
           <div class="port-overlay"><a href="https://sharp-barbershop.netlify.app" target="_blank">Visiter le site →</a></div>
         </div>
         <div class="port-body">
@@ -416,7 +412,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
       <div class="port-card reveal">
         <div class="port-img">
           <span class="port-tag web">Site vitrine</span>
-          <img src="images/projet-apex.png" alt="APEX Immobilier" loading="lazy">
+          <img src="images/projet-apex.jpeg" alt="APEX Immobilier" loading="lazy">
           <div class="port-overlay"><a href="https://apex-immobilier.netlify.app" target="_blank">Visiter le site →</a></div>
         </div>
         <div class="port-body">
@@ -429,7 +425,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
       <div class="port-card reveal">
         <div class="port-img">
           <span class="port-tag ecom">E-commerce</span>
-          <img src="images/projet-nova.png" alt="NOVA Boutique" loading="lazy">
+          <img src="images/projet-nova.jpeg" alt="NOVA Boutique" loading="lazy">
           <div class="port-overlay"><a href="https://nova-eshop.netlify.app" target="_blank">Visiter le site →</a></div>
         </div>
         <div class="port-body">

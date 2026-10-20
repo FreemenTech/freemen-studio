@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freemen Creative Studio — Sites web, Logos & Flyers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-alt: #F7F9FC;
+  --bg-card: #FFFFFF;
+  --fg: #0F172A;
+  --fg-muted: #64748B;
+  --blue: #2563EB;
+  --blue-dark: #1D4ED8;
+  --blue-light: rgba(37,99,235,.06);
+  --blue-glow: rgba(37,99,235,.15);
+  --green: #16A34A;
+  --green-light: rgba(22,163,74,.06);
+  --yellow: #EAB308;
+  --yellow-light: rgba(234,179,8,.08);
+  --border: #E2E8F0;
+  --radius: 1rem;
+  --nav-h: 72px;
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B1120; --bg-alt: #111827; --bg-card: #1E293B;
+    --fg: #F1F5F9; --fg-muted: #94A3B8;
+    --blue: #60A5FA; --blue-dark: #3B82F6;
+    --blue-light: rgba(96,165,250,.08); --blue-glow: rgba(96,165,250,.12);
+    --green: #4ADE80; --green-light: rgba(74,222,128,.08);
+    --yellow: #FACC15; --yellow-light: rgba(250,204,21,.06);
+    --border: #1E293B; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B1120; --bg-alt: #111827; --bg-card: #1E293B;
+  --fg: #F1F5F9; --fg-muted: #94A3B8;
+  --blue: #60A5FA; --blue-dark: #3B82F6;
+  --blue-light: rgba(96,165,250,.08); --blue-glow: rgba(96,165,250,.12);
+  --green: #4ADE80; --green-light: rgba(74,222,128,.08);
+  --yellow: #FACC15; --yellow-light: rgba(250,204,21,.06);
+  --border: #1E293B; color-scheme: dark;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
+body { font-family: var(--font-body); color: var(--fg); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden }
+h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; letter-spacing: -.02em }
+a { color: inherit; text-decoration: none }
+img { display: block; max-width: 100% }
+button { font-family: var(--font-body); cursor: pointer }
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding-inline: 16px }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .8rem 1.75rem; border-radius: .625rem; font-weight: 600; font-size: .9rem; border: none; transition: all .3s }
+.btn-primary { background: var(--blue); color: #fff }
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 24px var(--blue-glow) }
+.btn-outline { background: transparent; color: var(--fg); border: 1.5px solid var(--border) }
+.btn-outline:hover { border-color: var(--blue); color: var(--blue) }
+.btn-whatsapp { background: #25D366; color: #fff }
+.btn-whatsapp:hover { background: #1DA851; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.25) }
+
+.section-label { font-family: var(--font-body); font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: .5rem }
+.section-title { font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom: .75rem }
+.section-sub { color: var(--fg-muted); font-size: 1rem; max-width: 520px }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s }
+.reveal.visible { opacity: 1; transform: none }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none } }
+
+/* ─── NAV ─── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: box-shadow .3s }
+nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06) }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); max-width: 1120px; margin: 0 auto; padding-inline: 16px }
+.nav-logo { display: flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: -.01em }
+.nav-logo img { height: 36px; width: auto }
+.nav-links { display: flex; align-items: center; gap: 2rem }
+.nav-links a { font-size: .875rem; font-weight: 500; color: var(--fg-muted); transition: color .2s; position: relative }
+.nav-links a:hover { color: var(--fg) }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--blue); border-radius: 1px; transition: width .2s }
+.nav-links a:hover::after { width: 100% }
+.nav-cta { display: flex; align-items: center; gap: .75rem }
+.hamburger { display: none; background: none; border: none; flex-direction: column; gap: 5px; padding: 4px }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--fg); border-radius: 2px; transition: all .3s }
+@media (max-width: 768px) {
+  .nav-links { display: none }
+  .nav-cta .btn { display: none }
+  .hamburger { display: flex }
+}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: var(--bg); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; opacity: 0; pointer-events: none; transition: opacity .3s; padding: 16px }
+.mobile-menu.open { opacity: 1; pointer-events: all }
+.mobile-menu a { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600 }
+.mobile-close { position: absolute; top: 24px; right: 24px; background: none; border: none }
+.mobile-close svg { width: 28px; height: 28px; stroke: var(--fg) }
+@media (max-width: 768px) { .mobile-menu { display: flex } }
+
+/* ─── HERO ─── */
+.hero { padding: calc(var(--nav-h) + 3rem) 0 5rem; position: relative; overflow: hidden }
+.hero::before { content: ''; position: absolute; top: 0; right: -20%; width: 60%; height: 100%; background: radial-gradient(ellipse at center, var(--blue-light) 0%, transparent 65%); pointer-events: none }
+.hero::after { content: ''; position: absolute; bottom: -10%; left: -5%; width: 40%; height: 60%; background: radial-gradient(ellipse at center, var(--green-light) 0%, transparent 65%); pointer-events: none }
+.hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center }
+.hero-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem 1rem; border-radius: 2rem; background: var(--blue-light); border: 1px solid color-mix(in srgb, var(--blue) 15%, transparent); font-size: .78rem; font-weight: 600; color: var(--blue); margin-bottom: 1.5rem }
+.hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse-dot 2s infinite }
+@keyframes pulse-dot { 0%,100%{ opacity:1 } 50%{ opacity:.3 } }
+.hero h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1.25rem; line-height: 1.1 }
+.hero h1 .gradient { background: linear-gradient(135deg, var(--blue) 0%, var(--green) 50%, var(--yellow) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+.hero-sub { font-size: 1.05rem; color: var(--fg-muted); max-width: 440px; margin-bottom: 2rem; line-height: 1.7 }
+.hero-actions { display: flex; gap: .75rem; flex-wrap: wrap }
+.hero-visual { position: relative }
+.hero-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem }
+.hero-thumb { border-radius: .75rem; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 4/3; background: var(--bg-alt); transition: transform .3s, box-shadow .3s }
+.hero-thumb:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.1) }
+.hero-thumb img { width: 100%; height: 100%; object-fit: cover }
+.hero-float { position: absolute; padding: .5rem 1rem; border-radius: .625rem; background: var(--bg-card); border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06); font-size: .8rem; font-weight: 600; display: flex; align-items: center; gap: .4rem; z-index: 2 }
+.hero-float.f1 { top: -8px; left: -16px; animation: float 3s ease-in-out infinite }
+.hero-float.f2 { bottom: -8px; right: -16px; animation: float 3s ease-in-out 1.5s infinite }
+.hero-float .dot { width: 8px; height: 8px; border-radius: 50% }
+@keyframes float { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-8px) } }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem }
+.hero-stat h3 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 800 }
+.hero-stat h3 span { color: var(--blue) }
+.hero-stat p { font-size: .8rem; color: var(--fg-muted) }
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr }
+  .hero-visual { order: -1 }
+  .hero-stats { gap: 1.5rem }
+}
+
+/* ─── SERVICES ─── */
+.services { padding-block: 5rem; background: var(--bg-alt) }
+.services-header { text-align: center; margin-bottom: 3rem }
+.services-header .section-sub { margin-inline: auto }
+.srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem }
+.srv-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.25rem 1.75rem; position: relative; overflow: hidden; transition: all .35s }
+.srv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 1rem 1rem 0 0; transition: height .35s }
+.srv-card:nth-child(1)::before { background: linear-gradient(90deg, var(--blue), #818CF8) }
+.srv-card:nth-child(2)::before { background: linear-gradient(90deg, var(--green), #34D399) }
+.srv-card:nth-child(3)::before { background: linear-gradient(90deg, var(--yellow), #FB923C) }
+.srv-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.08) }
+.srv-card:hover::before { height: 4px }
+.srv-icon { width: 56px; height: 56px; border-radius: .875rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem }
+.srv-card:nth-child(1) .srv-icon { background: var(--blue-light) }
+.srv-card:nth-child(1) .srv-icon svg { color: var(--blue) }
+.srv-card:nth-child(2) .srv-icon { background: var(--green-light) }
+.srv-card:nth-child(2) .srv-icon svg { color: var(--green) }
+.srv-card:nth-child(3) .srv-icon { background: var(--yellow-light) }
+.srv-card:nth-child(3) .srv-icon svg { color: var(--yellow) }
+.srv-icon svg { width: 26px; height: 26px }
+.srv-card h3 { font-size: 1.15rem; margin-bottom: .5rem }
+.srv-card p { font-size: .9rem; color: var(--fg-muted); line-height: 1.7; margin-bottom: 1.25rem }
+.srv-list { list-style: none }
+.srv-list li { font-size: .85rem; color: var(--fg-muted); padding-left: 1.25rem; position: relative; margin-bottom: .4rem }
+.srv-list li::before { content: '✓'; position: absolute; left: 0; font-weight: 700 }
+.srv-card:nth-child(1) .srv-list li::before { color: var(--blue) }
+.srv-card:nth-child(2) .srv-list li::before { color: var(--green) }
+.srv-card:nth-child(3) .srv-list li::before { color: var(--yellow) }
+@media (max-width: 768px) { .srv-grid { grid-template-columns: 1fr } }
+
+/* ─── PORTFOLIO ─── */
+.portfolio { padding-block: 5rem }
+.portfolio-header { text-align: center; margin-bottom: 3rem }
+.portfolio-header .section-sub { margin-inline: auto }
+.port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem }
+.port-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all .35s }
+.port-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.08) }
+.port-img { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--bg-alt) }
+.port-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.4,0,.2,1) }
+.port-card:hover .port-img img { transform: scale(1.04) }
+.port-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 50%); opacity: 0; transition: opacity .3s; display: flex; align-items: flex-end; justify-content: center; padding: 1.5rem }
+.port-card:hover .port-overlay { opacity: 1 }
+.port-overlay a { padding: .6rem 1.5rem; border-radius: .5rem; background: #fff; color: #0F172A; font-size: .85rem; font-weight: 600; transition: transform .2s }
+.port-overlay a:hover { transform: translateY(-2px) }
+.port-tag { position: absolute; top: .75rem; left: .75rem; padding: .25rem .65rem; border-radius: .4rem; font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; z-index: 2 }
+.port-tag.web { background: var(--blue); color: #fff }
+.port-tag.ecom { background: var(--green); color: #fff }
+.port-body { padding: 1.25rem 1.5rem }
+.port-body h3 { font-size: 1.05rem; margin-bottom: .25rem }
+.port-body p { font-size: .85rem; color: var(--fg-muted) }
+.port-tech { display: flex; gap: .4rem; margin-top: .75rem; flex-wrap: wrap }
+.port-tech span { padding: .2rem .55rem; border-radius: .3rem; font-size: .7rem; font-weight: 500; background: var(--bg-alt); color: var(--fg-muted); border: 1px solid var(--border) }
+@media (max-width: 640px) { .port-grid { grid-template-columns: 1fr } }
+
+/* ─── PROCESS ─── */
+.process { padding-block: 5rem; background: var(--bg-alt) }
+.process-header { text-align: center; margin-bottom: 3rem }
+.process-header .section-sub { margin-inline: auto }
+.proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem }
+.proc-step { text-align: center; padding: 2rem 1.25rem; position: relative }
+.proc-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: .9rem; margin: 0 auto 1rem; color: #fff }
+.proc-step:nth-child(1) .proc-num { background: var(--blue) }
+.proc-step:nth-child(2) .proc-num { background: var(--green) }
+.proc-step:nth-child(3) .proc-num { background: var(--yellow); color: var(--fg) }
+.proc-step:nth-child(4) .proc-num { background: var(--blue) }
+.proc-step h4 { font-size: .95rem; margin-bottom: .35rem }
+.proc-step p { font-size: .82rem; color: var(--fg-muted) }
+.proc-line { display: none }
+@media (max-width: 768px) { .proc-grid { grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 400px) { .proc-grid { grid-template-columns: 1fr } }
+
+/* ─── ABOUT ─── */
+.about { padding-block: 5rem }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center }
+.about-visual { position: relative }
+.about-card { background: linear-gradient(135deg, var(--blue) 0%, #4338CA 40%, var(--green) 100%); border-radius: var(--radius); padding: 3rem 2.5rem; color: #fff; position: relative; overflow: hidden }
+.about-card::before { content: ''; position: absolute; top: -40%; right: -20%; width: 50%; height: 160%; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); pointer-events: none }
+.about-card h3 { font-size: 1.5rem; margin-bottom: 1rem; position: relative }
+.about-card p { font-size: .95rem; opacity: .8; line-height: 1.7; position: relative }
+.about-card .logo-mark { width: 60px; margin-bottom: 1rem; opacity: .9 }
+.about-content h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem }
+.about-content p { font-size: .95rem; color: var(--fg-muted); line-height: 1.8; margin-bottom: 1rem }
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem }
+.about-value { display: flex; align-items: flex-start; gap: .6rem }
+.about-value svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px }
+.about-value h4 { font-size: .85rem; margin-bottom: .15rem }
+.about-value p { font-size: .8rem; color: var(--fg-muted); margin: 0 }
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr }
+  .about-values { grid-template-columns: 1fr }
+}
+
+/* ─── CTA ─── */
+.cta { padding-block: 5rem }
+.cta-inner { background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%); border-radius: 1.25rem; padding: clamp(3rem, 6vw, 4.5rem); text-align: center; color: #fff; position: relative; overflow: hidden }
+.cta-inner::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 80%; height: 200%; background: radial-gradient(ellipse at center, rgba(37,99,235,.15) 0%, transparent 60%); pointer-events: none }
+.cta-inner::after { content: ''; position: absolute; bottom: -30%; right: 10%; width: 40%; height: 100%; background: radial-gradient(circle, rgba(22,163,74,.1) 0%, transparent 60%); pointer-events: none }
+.cta-inner h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; margin-bottom: .75rem; position: relative }
+.cta-inner p { color: rgba(255,255,255,.6); font-size: 1rem; max-width: 460px; margin: 0 auto 2rem; position: relative }
+.cta-actions { display: flex; justify-content: center; gap: .75rem; flex-wrap: wrap; position: relative }
+
+/* ─── CONTACT ─── */
+.contact { padding-block: 5rem; background: var(--bg-alt) }
+.contact-header { text-align: center; margin-bottom: 3rem }
+.contact-header .section-sub { margin-inline: auto }
+.contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 640px; margin: 0 auto }
+.cc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all .3s }
+.cc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.06) }
+.cc-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem }
+.cc-card:first-child .cc-icon { background: rgba(37,211,102,.1) }
+.cc-card:first-child .cc-icon svg { color: #25D366 }
+.cc-card:last-child .cc-icon { background: var(--blue-light) }
+.cc-card:last-child .cc-icon svg { color: var(--blue) }
+.cc-icon svg { width: 24px; height: 24px }
+.cc-card h3 { font-size: 1rem; margin-bottom: .25rem }
+.cc-card p { font-size: .85rem; color: var(--fg-muted); margin-bottom: 1rem }
+@media (max-width: 480px) { .contact-cards { grid-template-columns: 1fr } }
+
+/* ─── FOOTER ─── */
+footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; max-width: 1120px; margin: 0 auto; padding-inline: 16px }
+.footer-brand { display: flex; align-items: center; gap: .5rem }
+.footer-brand img { height: 28px; width: auto }
+.footer-brand span { font-family: var(--font-display); font-size: .9rem; font-weight: 700 }
+.footer-links { display: flex; gap: 2rem }
+.footer-links a { font-size: .85rem; opacity: .5; transition: opacity .2s }
+.footer-links a:hover { opacity: 1 }
+.footer-copy { width: 100%; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.06); font-size: .75rem; opacity: .35; margin-top: 1rem }
+
+/* ─── WHATSAPP FAB ─── */
+.wa-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 56px; height: 56px; border-radius: 50%; background: #25D366; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,.4); z-index: 90; transition: transform .3s, box-shadow .3s }
+.wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,.5) }
+.wa-fab svg { width: 28px; height: 28px; color: #fff }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="images/logo.png" alt="Freemen Creative Studio">Freemen Creative Studio</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Réalisations</a>
+      <a href="#process">Processus</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://wa.me/2290159029537" target="_blank" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.82rem">Devis gratuit</a>
+      <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="closeMenu" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#portfolio" class="mobile-link">Réalisations</a>
+  <a href="#process" class="mobile-link">Processus</a>
+  <a href="#about" class="mobile-link">À propos</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="https://wa.me/2290159029537" target="_blank" class="btn btn-whatsapp" style="margin-top:1rem">Demander un devis</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge reveal">Disponible pour vos projets</div>
+        <h1 class="reveal">On donne vie à vos<br><span class="gradient">idées créatives</span></h1>
+        <p class="hero-sub reveal">Studio créatif spécialisé en sites web, logos et flyers. Des designs modernes et percutants qui font la différence pour votre business.</p>
+        <div class="hero-actions reveal">
+          <a href="https://wa.me/2290159029537" target="_blank" class="btn btn-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Discuter sur WhatsApp</a>
+          <a href="#portfolio" class="btn btn-outline">Voir nos réalisations</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="hero-stat"><h3>20<span>+</span></h3><p>Projets livrés</p></div>
+          <div class="hero-stat"><h3>100<span>%</span></h3><p>Clients satisfaits</p></div>
+          <div class="hero-stat"><h3>48<span>h</span></h3><p>Délai moyen</p></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-showcase">
+          <div class="hero-thumb"><img src="images/projet-saveur.jpeg" alt="Saveur d'Or"></div>
+          <div class="hero-thumb"><img src="images/projet-sharp.jpeg" alt="Sharp Barbershop"></div>
+          <div class="hero-thumb"><img src="images/projet-apex.jpeg" alt="APEX Immobilier"></div>
+          <div class="hero-thumb"><img src="images/projet-nova.jpeg" alt="NOVA Boutique"></div>
+        </div>
+        <div class="hero-float f1"><div class="dot" style="background:var(--green)"></div>Design moderne</div>
+        <div class="hero-float f2"><div class="dot" style="background:var(--yellow)"></div>100% responsive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-label">Services</div>
+      <h2 class="section-title">Ce qu'on fait de mieux</h2>
+      <p class="section-sub">Des solutions créatives adaptées à votre budget et à vos ambitions.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3>Sites Web</h3>
+        <p>Des sites vitrines et e-commerce ultra modernes, rapides et optimisés pour convertir vos visiteurs en clients.</p>
+        <ul class="srv-list">
+          <li>Design sur mesure & responsive</li>
+          <li>Optimisé SEO & performance</li>
+          <li>Compatible tous appareils</li>
+          <li>Livraison rapide</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Logos</h3>
+        <p>Des identités visuelles uniques et mémorables qui reflètent l'essence de votre marque.</p>
+        <ul class="srv-list">
+          <li>Création originale vectorielle</li>
+          <li>Fichiers SVG, PNG & PDF</li>
+          <li>Déclinaisons couleur & N&B</li>
+          <li>Révisions incluses</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+        <h3>Flyers & Print</h3>
+        <p>Des supports imprimés et numériques qui attirent l'attention et communiquent votre message efficacement.</p>
+        <ul class="srv-list">
+          <li>Flyers, affiches, cartes de visite</li>
+          <li>Posts & stories réseaux sociaux</li>
+          <li>Fichiers haute résolution</li>
+          <li>Prêt à imprimer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="portfolio-header reveal">
+      <div class="section-label">Réalisations</div>
+      <h2 class="section-title">Nos derniers projets</h2>
+      <p class="section-sub">Chaque projet est conçu avec soin pour répondre aux besoins uniques de nos clients.</p>
+    </div>
+    <div class="port-grid">
+
+      <div class="port-card reveal">
+        <div class="port-img">
+          <span class="port-tag web">Site vitrine</span>
+          <img src="images/projet-saveur.png" alt="Saveur d'Or — Restaurant" loading="lazy">
+          <div class="port-overlay"><a href="https://saveur-restaurant.netlify.app" target="_blank">Visiter le site →</a></div>
+        </div>
+        <div class="port-body">
+          <h3>Saveur d'Or</h3>
+          <p>Site vitrine pour un restaurant gastronomique — réservation, menu interactif et galerie.</p>
+          <div class="port-tech"><span>Restaurant</span><span>Responsive</span><span>Dark mode</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img">
+          <span class="port-tag web">Site vitrine</span>
+          <img src="images/projet-sharp.png" alt="Sharp — Barbershop" loading="lazy">
+          <div class="port-overlay"><a href="https://sharp-barbershop.netlify.app" target="_blank">Visiter le site →</a></div>
+        </div>
+        <div class="port-body">
+          <h3>Sharp Barbershop</h3>
+          <p>Site moderne pour un salon de barbier premium — galerie, tarifs et prise de rendez-vous.</p>
+          <div class="port-tech"><span>Barbershop</span><span>Responsive</span><span>Animations</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img">
+          <span class="port-tag web">Site vitrine</span>
+          <img src="images/projet-apex.png" alt="APEX Immobilier" loading="lazy">
+          <div class="port-overlay"><a href="https://apex-immobilier.netlify.app" target="_blank">Visiter le site →</a></div>
+        </div>
+        <div class="port-body">
+          <h3>APEX Immobilier</h3>
+          <p>Plateforme immobilière avec recherche avancée, fiches propriétés et formulaire de contact.</p>
+          <div class="port-tech"><span>Immobilier</span><span>Responsive</span><span>Recherche</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img">
+          <span class="port-tag ecom">E-commerce</span>
+          <img src="images/projet-nova.png" alt="NOVA Boutique" loading="lazy">
+          <div class="port-overlay"><a href="https://nova-eshop.netlify.app" target="_blank">Visiter le site →</a></div>
+        </div>
+        <div class="port-body">
+          <h3>NOVA Boutique</h3>
+          <p>Boutique e-commerce complète — panier, checkout multi-étapes, filtres et recherche.</p>
+          <div class="port-tech"><span>E-commerce</span><span>Panier</span><span>Checkout</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="section-label">Processus</div>
+      <h2 class="section-title">Comment on travaille</h2>
+      <p class="section-sub">Un processus simple et transparent, du premier contact à la livraison.</p>
+    </div>
+    <div class="proc-grid reveal">
+      <div class="proc-step">
+        <div class="proc-num">1</div>
+        <h4>Discussion</h4>
+        <p>On échange sur vos besoins, vos objectifs et votre vision par WhatsApp ou appel.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">2</div>
+        <h4>Proposition</h4>
+        <p>On vous envoie un devis détaillé avec les délais et le plan de travail.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">3</div>
+        <h4>Création</h4>
+        <p>On design et développe votre projet avec des points de validation réguliers.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">4</div>
+        <h4>Livraison</h4>
+        <p>Votre projet est livré, mis en ligne et prêt à impressionner vos clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <img src="images/logo.png" alt="Freemen Creative Studio" class="logo-mark">
+          <h3>Créativité sans limites, résultats concrets.</h3>
+          <p>Freemen Creative Studio, c'est un studio créatif basé au Bénin, passionné par le design digital. On crée des expériences visuelles qui marquent les esprits et font grandir votre activité.</p>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">À propos</div>
+        <h2>Un studio créatif qui comprend vos ambitions</h2>
+        <p>Chaque projet est une opportunité de créer quelque chose d'unique. On ne fait pas du copier-coller — on écoute, on comprend et on crée sur mesure pour que votre marque se démarque vraiment.</p>
+        <p>Notre objectif : vous fournir un travail de qualité internationale, à un prix accessible, avec un service réactif et transparent.</p>
+        <div class="about-values">
+          <div class="about-value">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div><h4>Qualité premium</h4><p>Des designs au standard international</p></div>
+          </div>
+          <div class="about-value">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div><h4>Livraison rapide</h4><p>Respect des délais garanti</p></div>
+          </div>
+          <div class="about-value">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+            <div><h4>Prix accessible</h4><p>Rapport qualité-prix imbattable</p></div>
+          </div>
+          <div class="about-value">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <div><h4>Support réactif</h4><p>On vous répond sous 1 heure</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta reveal">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>Prêt à lancer<br>votre projet ?</h2>
+      <p>Discutons de votre vision. Devis gratuit et sans engagement — on vous répond en moins d'une heure.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/2290159029537" target="_blank" class="btn btn-whatsapp" style="padding:1rem 2.5rem;font-size:1rem"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Démarrer la discussion</a>
+        <a href="mailto:houngbedjifreemen@gmail.com" class="btn btn-outline" style="border-color:rgba(255,255,255,.2);color:#fff;padding:1rem 2.5rem;font-size:1rem">Envoyer un email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-header reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Parlons de votre projet</h2>
+      <p class="section-sub">Choisissez le moyen qui vous convient le mieux pour nous contacter.</p>
+    </div>
+    <div class="contact-cards reveal">
+      <div class="cc-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+        <h3>WhatsApp</h3>
+        <p>Réponse rapide — en moins d'1 heure</p>
+        <a href="https://wa.me/2290159029537" target="_blank" class="btn btn-whatsapp" style="width:100%">Discuter maintenant</a>
+      </div>
+      <div class="cc-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <h3>Email</h3>
+        <p>Pour les demandes détaillées</p>
+        <a href="mailto:houngbedjifreemen@gmail.com" class="btn btn-primary" style="width:100%">Envoyer un email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="images/logo.png" alt="Logo"><span>Freemen Creative Studio</span></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Réalisations</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-copy" style="max-width:1120px;margin-inline:auto;padding-inline:16px">&copy; 2026 Freemen Creative Studio. Tous droits réservés.</div>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/2290159029537" target="_blank" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

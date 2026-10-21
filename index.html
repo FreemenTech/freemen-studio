@@ -177,6 +177,12 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06) }
 .port-tag { position: absolute; top: .75rem; left: .75rem; padding: .25rem .65rem; border-radius: .4rem; font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; z-index: 2 }
 .port-tag.web { background: var(--blue); color: #fff }
 .port-tag.ecom { background: var(--green); color: #fff }
+.port-tag.logo { background: var(--yellow); color: #0F172A }
+.port-tag.flyer { background: #8B5CF6; color: #fff }
+.port-filters { display: flex; justify-content: center; gap: .5rem; margin-bottom: 2rem; flex-wrap: wrap }
+.port-filters button { padding: .5rem 1.25rem; border-radius: 2rem; border: 1.5px solid var(--border); background: var(--bg-card); color: var(--fg-muted); font-family: var(--font-body); font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .25s }
+.port-filters button.active, .port-filters button:hover { background: var(--blue); color: #fff; border-color: var(--blue) }
+.port-card.hidden { display: none }
 .port-body { padding: 1.25rem 1.5rem }
 .port-body h3 { font-size: 1.05rem; margin-bottom: .25rem }
 .port-body p { font-size: .85rem; color: var(--fg-muted) }
@@ -308,7 +314,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
           <a href="#portfolio" class="btn btn-outline">Voir nos réalisations</a>
         </div>
         <div class="hero-stats reveal">
-          <div class="hero-stat"><h3>20<span>+</span></h3><p>Projets livrés</p></div>
+          <div class="hero-stat"><h3>15<span>+</span></h3><p>Projets livrés</p></div>
           <div class="hero-stat"><h3>100<span>%</span></h3><p>Clients satisfaits</p></div>
           <div class="hero-stat"><h3>48<span>h</span></h3><p>Délai moyen</p></div>
         </div>
@@ -381,9 +387,15 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
       <h2 class="section-title">Nos derniers projets</h2>
       <p class="section-sub">Chaque projet est conçu avec soin pour répondre aux besoins uniques de nos clients.</p>
     </div>
+    <div class="port-filters reveal">
+      <button class="active" data-filter="all">Tous</button>
+      <button data-filter="web">Sites Web</button>
+      <button data-filter="logo">Logos</button>
+      <button data-filter="flyer">Flyers</button>
+    </div>
     <div class="port-grid">
 
-      <div class="port-card reveal">
+      <div class="port-card reveal" data-cat="web">
         <div class="port-img">
           <span class="port-tag web">Site vitrine</span>
           <img src="images/projet-saveur.png" alt="Saveur d'Or — Restaurant" loading="lazy">
@@ -396,7 +408,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
         </div>
       </div>
 
-      <div class="port-card reveal">
+      <div class="port-card reveal" data-cat="web">
         <div class="port-img">
           <span class="port-tag web">Site vitrine</span>
           <img src="images/projet-sharp.png" alt="Sharp — Barbershop" loading="lazy">
@@ -409,7 +421,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
         </div>
       </div>
 
-      <div class="port-card reveal">
+      <div class="port-card reveal" data-cat="web">
         <div class="port-img">
           <span class="port-tag web">Site vitrine</span>
           <img src="images/projet-apex.png" alt="APEX Immobilier" loading="lazy">
@@ -422,7 +434,7 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
         </div>
       </div>
 
-      <div class="port-card reveal">
+      <div class="port-card reveal" data-cat="web">
         <div class="port-img">
           <span class="port-tag ecom">E-commerce</span>
           <img src="images/projet-nova.png" alt="NOVA Boutique" loading="lazy">
@@ -432,6 +444,140 @@ footer { background: #0F172A; color: #F1F5F9; padding: 3rem 0 1.5rem }
           <h3>NOVA Boutique</h3>
           <p>Boutique e-commerce complète — panier, checkout multi-étapes, filtres et recherche.</p>
           <div class="port-tech"><span>E-commerce</span><span>Panier</span><span>Checkout</span></div>
+        </div>
+      </div>
+
+      <!-- LOGOS -->
+      <div class="port-card reveal" data-cat="logo">
+        <div class="port-img">
+          <span class="port-tag logo">Logo</span>
+          <img src="images/logo-nexaweb.png" alt="NexaWeb Logo" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>NexaWeb</h3>
+          <p>Logo pour une agence digitale — identité tech moderne et professionnelle.</p>
+          <div class="port-tech"><span>Branding</span><span>Vectoriel</span><span>Digital</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="logo">
+        <div class="port-img">
+          <span class="port-tag logo">Logo</span>
+          <img src="images/logo-danxome-street.png" alt="Danxomè Street Logo" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Danxomè Street</h3>
+          <p>Logo pour une marque de streetwear béninois — identité africaine contemporaine.</p>
+          <div class="port-tech"><span>Streetwear</span><span>Branding</span><span>Afrique</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="logo">
+        <div class="port-img">
+          <span class="port-tag logo">Logo</span>
+          <img src="images/maverix.png" alt="MaveriX Logo" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>MaveriX</h3>
+          <p>Logo pour un studio d'innovation — design géométrique bold et mémorable.</p>
+          <div class="port-tech"><span>Tech</span><span>Géométrique</span><span>Bold</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="logo">
+        <div class="port-img">
+          <span class="port-tag logo">Logo</span>
+          <img src="images/logo-braw-coffee.png" alt="Braw Coffee Logo" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Braw Coffee</h3>
+          <p>Logo pour un coffee shop artisanal — ambiance chaleureuse et premium.</p>
+          <div class="port-tech"><span>Café</span><span>Branding</span><span>Artisanal</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="logo">
+        <div class="port-img">
+          <span class="port-tag logo">Logo</span>
+          <img src="images/logo-nail.png" alt="Logo Nail" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Nail Studio</h3>
+          <p>Logo pour un salon de manucure — esthétique féminine et élégante.</p>
+          <div class="port-tech"><span>Beauté</span><span>Élégant</span><span>Féminin</span></div>
+        </div>
+      </div>
+
+      <!-- FLYERS -->
+      <div class="port-card reveal" data-cat="flyer">
+        <div class="port-img">
+          <span class="port-tag flyer">Flyer</span>
+          <img src="images/flyez-grand-opening.png" alt="Flyer Grand Opening" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Savane Grill — Ouverture</h3>
+          <p>Flyer d'inauguration pour un restaurant — design gourmand et festif.</p>
+          <div class="port-tech"><span>Restaurant</span><span>Événement</span><span>Print</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="flyer">
+        <div class="port-img">
+          <span class="port-tag flyer">Flyer</span>
+          <img src="images/flyer-halloween.png" alt="Flyer Halloween" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Nuit de l'Horreur</h3>
+          <p>Flyer pour une soirée Halloween — ambiance sombre et immersive.</p>
+          <div class="port-tech"><span>Événement</span><span>Soirée</span><span>Print</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="flyer">
+        <div class="port-img">
+          <span class="port-tag flyer">Flyer</span>
+          <img src="images/flyer-summer-party.png" alt="Flyer Summer Party" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Beach Party Cotonou</h3>
+          <p>Flyer pour une beach party — vibes estivales et énergie tropicale.</p>
+          <div class="port-tech"><span>Soirée</span><span>Beach</span><span>Print</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="flyer">
+        <div class="port-img">
+          <span class="port-tag flyer">Flyer</span>
+          <img src="images/flyer-elite-consulting.png" alt="Flyer Elite Consulting" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Elite Consulting</h3>
+          <p>Flyer promotionnel pour un cabinet de conseil — professionnel et percutant.</p>
+          <div class="port-tech"><span>Corporate</span><span>Business</span><span>Print</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="flyer">
+        <div class="port-img">
+          <span class="port-tag flyer">Flyer</span>
+          <img src="images/flyer-service-nettoyage-home.png" alt="Flyer CleanPro" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>CleanPro Suisse</h3>
+          <p>Flyer pour un service de nettoyage professionnel — clean et efficace.</p>
+          <div class="port-tech"><span>Services</span><span>Corporate</span><span>Print</span></div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="flyer">
+        <div class="port-img">
+          <span class="port-tag flyer">Flyer</span>
+          <img src="images/flyer-pressing.png" alt="Flyer Pressing" loading="lazy">
+        </div>
+        <div class="port-body">
+          <h3>Propre Express</h3>
+          <p>Flyer pour un service de blanchisserie — design frais et professionnel.</p>
+          <div class="port-tech"><span>Services</span><span>Local</span><span>Print</span></div>
         </div>
       </div>
 
@@ -583,6 +729,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Portfolio filters
+document.querySelectorAll('.port-filters button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.port-filters button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.port-card').forEach(card => {
+      if (f === 'all' || card.dataset.cat === f) { card.classList.remove('hidden'); } else { card.classList.add('hidden'); }
+    });
   });
 });
 
